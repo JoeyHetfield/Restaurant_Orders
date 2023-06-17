@@ -34,3 +34,6 @@ def test_dish():
 
     with pytest.raises(TypeError):
         Dish("pizza", "27.0")
+
+    with pytest.raises(ValueError):
+        Dish("pizza", -27.0)
