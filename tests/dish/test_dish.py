@@ -1,5 +1,6 @@
 from src.models.dish import Dish  # noqa: F401, E261, E501
 from src.models.ingredient import Ingredient, Restriction
+import pytest
 
 
 # Req 2
@@ -26,6 +27,10 @@ def test_dish():
     food.add_ingredient_dependency(item1, 2)
     assert food.recipe.get(item1) == 2
     assert food.recipe.get(item1) != 3
+    assert food.get_ingredients() == {item1}
 
     needed_restrictions = {Restriction.ANIMAL_DERIVED, Restriction.ANIMAL_MEAT}
     assert food.get_restrictions() == needed_restrictions
+
+    with pytest.raises(TypeError):
+        Dish("pizza", "27.0")
