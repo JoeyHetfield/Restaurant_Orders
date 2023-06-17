@@ -1,4 +1,5 @@
 from src.models.dish import Dish  # noqa: F401, E261, E501
+from src.models.ingredient import Ingredient
 
 
 # Req 2
@@ -16,3 +17,12 @@ def test_dish():
 
     assert hash(food) == hash(food3)
     assert hash(food) != hash(food2)
+
+    food_rpr = "Dish('hamburguer', R$15.00)"
+    assert repr(food) == food_rpr
+    assert repr(food2) != food_rpr
+
+    item1 = Ingredient("bacon")
+    food.add_ingredient_dependency(item1, 2)
+    assert food.recipe.get(item1) == 2
+    assert food.recipe.get(item1) != 3
