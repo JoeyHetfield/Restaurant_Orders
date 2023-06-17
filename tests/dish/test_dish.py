@@ -1,5 +1,5 @@
 from src.models.dish import Dish  # noqa: F401, E261, E501
-from src.models.ingredient import Ingredient
+from src.models.ingredient import Ingredient, Restriction
 
 
 # Req 2
@@ -26,3 +26,6 @@ def test_dish():
     food.add_ingredient_dependency(item1, 2)
     assert food.recipe.get(item1) == 2
     assert food.recipe.get(item1) != 3
+
+    needed_restrictions = {Restriction.ANIMAL_DERIVED, Restriction.ANIMAL_MEAT}
+    assert food.get_restrictions() == needed_restrictions
