@@ -12,3 +12,9 @@ def test_ingredient():
     assert item2.name == "frango"
 
     assert item != item2
+
+    item3 = Ingredient("bacon")
+    assert item == item3
+
+    assert hash(item) == hash(item3)
+    assert hash(item) != hash(item2)
