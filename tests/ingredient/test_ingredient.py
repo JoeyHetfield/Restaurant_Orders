@@ -18,3 +18,5 @@ def test_ingredient():
 
     assert hash(item) == hash(item3)
     assert hash(item) != hash(item2)
+
+    assert item.restrictions == {"ANIMAL_DERIVED", "ANIMAL_MEAT"}
