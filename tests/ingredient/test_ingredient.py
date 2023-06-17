@@ -1,4 +1,7 @@
-from src.models.ingredient import Ingredient  # noqa: F401, E261, E501
+from src.models.ingredient import (
+    Ingredient,
+    Restriction,
+)  # noqa: F401, E261, E501
 
 
 def test_ingredient():
@@ -19,4 +22,6 @@ def test_ingredient():
     assert hash(item) == hash(item3)
     assert hash(item) != hash(item2)
 
-    assert item.restrictions == {"ANIMAL_DERIVED", "ANIMAL_MEAT"}
+    needed_restrictions = {Restriction.ANIMAL_DERIVED, Restriction.ANIMAL_MEAT}
+
+    assert item.restrictions == needed_restrictions
