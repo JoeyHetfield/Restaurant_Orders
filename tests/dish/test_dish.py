@@ -13,3 +13,6 @@ def test_dish():
     food3 = Dish("hamburguer", 15.0)
     assert food3.name == food.name
     assert food3 == food
+
+    assert hash(food) == hash(food3)
+    assert hash(food) != hash(food2)
