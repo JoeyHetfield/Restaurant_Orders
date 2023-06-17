@@ -7,3 +7,8 @@ def test_ingredient():
 
     expected_repr = "Ingredient('bacon')"
     assert repr(item) == expected_repr
+
+    item2 = Ingredient("frango")
+    assert item2.name == "frango"
+
+    assert item != item2
